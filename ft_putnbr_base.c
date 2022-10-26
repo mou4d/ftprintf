@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 05:35:19 by mbousbaa          #+#    #+#             */
-/*   Updated: 2022/10/26 01:45:57 by mbousbaa         ###   ########.fr       */
+/*   Created: 2022/10/25 22:13:30 by mbousbaa          #+#    #+#             */
+/*   Updated: 2022/10/25 22:13:42 by mbousbaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+void	ft_putnbr_base(unsigned int nb, int base)
+{
+	unsigned long	l;
+	char			*base_chars;
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr(int nb);
-void	ft_putnbr_base(unsigned int nb, int base);
-int		ft_printf(const char *str, ...);
-
-#endif
+	if (base == 10)
+		base_chars = "0123456789";
+	if (base == 16)
+		base_chars = "0123456789abcdef";
+	l = nb;
+	if (l > base - 1)
+		ft_putnbr_base(l / base, base);
+	ft_putchar(base_chars[(l % base)]);
+}

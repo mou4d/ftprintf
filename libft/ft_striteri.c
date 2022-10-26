@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 05:35:19 by mbousbaa          #+#    #+#             */
-/*   Updated: 2022/10/26 01:45:57 by mbousbaa         ###   ########.fr       */
+/*   Created: 2022/10/14 06:43:31 by mbousbaa          #+#    #+#             */
+/*   Updated: 2022/10/14 06:50:28 by mbousbaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	int	i;
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr(int nb);
-void	ft_putnbr_base(unsigned int nb, int base);
-int		ft_printf(const char *str, ...);
-
-#endif
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i])
+	{
+		f(i, s + i);
+		i++;
+	}
+}

@@ -1,26 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 05:35:19 by mbousbaa          #+#    #+#             */
-/*   Updated: 2022/10/26 01:45:57 by mbousbaa         ###   ########.fr       */
+/*   Created: 2022/10/13 02:26:57 by mbousbaa          #+#    #+#             */
+/*   Updated: 2022/10/13 03:15:47 by mbousbaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
+static int	word_count(char *str, char d)
+{
+	size_t	i;
+	int		wcount;
+	int		founded;
 
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr(int nb);
-void	ft_putnbr_base(unsigned int nb, int base);
-int		ft_printf(const char *str, ...);
+	wcount = 0;
+	i = 0;
+	founded = 0;
+	while (*str)
+	{
+		if (*str == d)
+			founded = 1;
+		
+	}
+	return (wcount);
+}
 
-#endif
+// char	**ft_split(char *s, char c)
+// {
+
+// }
+
+#include <stdio.h>
+int	main ()
+{
+	int	count = 0;
+	char *s = "  testing ft split word counter   ";
+
+	printf("%d\n", word_count(s, ' '));
+}

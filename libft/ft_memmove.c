@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 05:35:19 by mbousbaa          #+#    #+#             */
-/*   Updated: 2022/10/26 01:45:57 by mbousbaa         ###   ########.fr       */
+/*   Created: 2022/10/03 04:11:45 by mbousbaa          #+#    #+#             */
+/*   Updated: 2022/10/08 05:30:07 by mbousbaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned char		*dstp;
+	unsigned char		*srcp;
 
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr(int nb);
-void	ft_putnbr_base(unsigned int nb, int base);
-int		ft_printf(const char *str, ...);
-
-#endif
+	dstp = (unsigned char *) dst;
+	srcp = (unsigned char *) src;
+	if (!dst && !src)
+		return (0);
+	if (dst < src)
+		return (ft_memcpy(dst, src, len));
+	while (len > 0)
+	{
+		len--;
+		dstp[len] = srcp[len];
+	}
+	return (dst);
+}

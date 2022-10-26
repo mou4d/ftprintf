@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 05:35:19 by mbousbaa          #+#    #+#             */
-/*   Updated: 2022/10/26 01:45:57 by mbousbaa         ###   ########.fr       */
+/*   Created: 2022/10/05 00:25:10 by mbousbaa          #+#    #+#             */
+/*   Updated: 2022/10/20 00:29:18 by mbousbaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
+int	ft_strncmp(char *s1, char *s2, size_t n)
+{
+	unsigned char	*u1;
+	unsigned char	*u2;
+	size_t			i;
 
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr(int nb);
-void	ft_putnbr_base(unsigned int nb, int base);
-int		ft_printf(const char *str, ...);
-
-#endif
+	if (n == 0)
+		return (0);
+	i = 0;
+	u1 = (unsigned char *)s1;
+	u2 = (unsigned char *)s2;
+	while (i < n && (u1[i] || u2[i]))
+	{
+		if (u1[i] != u2[i])
+			return (u1[i] - u2[i]);
+		i++;
+	}
+	return (0);
+}
