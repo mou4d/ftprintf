@@ -6,11 +6,13 @@
 /*   By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 22:11:22 by mbousbaa          #+#    #+#             */
-/*   Updated: 2022/10/25 22:11:28 by mbousbaa         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:46:40 by mbousbaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c)
+#include "ft_printf.h"
+
+void	ft_putchar(char c, size_t *count)
 {
-	write(1, &c, 1);
+	*count += write(1, &c, 1);
 }
