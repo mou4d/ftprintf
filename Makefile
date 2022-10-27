@@ -6,7 +6,7 @@
 #    By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 22:15:22 by mbousbaa          #+#    #+#              #
-#    Updated: 2022/10/26 17:35:29 by mbousbaa         ###   ########.fr        #
+#    Updated: 2022/10/26 22:33:02 by mbousbaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,9 @@ INCLUDES = .
 NAME = libftprintf.a
 
 all : $(NAME)
-	echo ">>>>>>>> SUCCESS <<<<<<<<"
+	@echo ">>>>>>>> SUCCESS <<<<<<<<"
 	
 $(NAME) : $(OBJECTS)
-	echo $(OBJECTS) 
 	ar -cvr $(NAME) $(OBJECTS)
 	
 %.o: %.c
