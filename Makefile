@@ -16,22 +16,21 @@ SOURCES = ft_printf.c ft_putchar.c ft_putnbr.c ft_putnbr_base.c ft_putstr.c ft_s
 OBJECTS = $(SOURCES:.c=.o)
 INCLUDES = .
 NAME = libftprintf.a
+OBJS_DIR = ./objs/
 
 all : $(NAME)
 	@echo ">>>>>>>> SUCCESS <<<<<<<<"
 	
 $(NAME) : $(OBJECTS)
 	ar -cvr $(NAME) $(OBJECTS)
-	
-%.o: %.c
+
+%.o : %.c
 	$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@ 
-	
-build_libft:
-	make clean -C libft
 
 clean :
 	@rm -f *.o
+
 fclean : clean
 	@rm -f $(NAME)
-	echo "fclen done at `date`"
-re :
+
+re : fclean all

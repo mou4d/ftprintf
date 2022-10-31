@@ -37,8 +37,8 @@ int	ft_printf(const char *str, ...)
 			else if (str[i] == 'p')
 			{
 				ft_putstr("0x", &ret);
-				ft_putnbr_base((unsigned long)va_arg(argsptr, void *),
-					"123456789abcdef", &ret);
+				ft_putnbr_base(va_arg(argsptr, unsigned long),
+					"0123456789abcdef", &ret);
 			}
 			else if ((str[i] == 'd') || (str[i] == 'i'))
 			{	
@@ -66,9 +66,7 @@ int	ft_printf(const char *str, ...)
 			}
 		}
 		else
-		{
 			ft_putchar(str[i], &ret);
-		}
 		i++;
 	}
 	va_end(argsptr);
@@ -78,6 +76,13 @@ int	ft_printf(const char *str, ...)
 
 //  int main()
 //  {
-// 	 printf("%s", (char *) NULL);
+// 	int n;
+// 	n = 777; 
+// 	ft_printf("%%p %p\n", &n);
+// 	printf("%%p %p\n", &n);
+// 	ft_printf("%%x %x\n", 75395145);
+// 	printf("%%x %x\n", 75395145);
+// 	ft_printf("%%u %u\n", 1024);
+// 	printf("%%u %u\n", 1024);
 // 	 return 0;
 //  }

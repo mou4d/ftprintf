@@ -16,8 +16,8 @@ void	ft_putnbr_base(unsigned long nb, char *base, size_t *count)
 {
 	size_t			base_len;
 
-	base_len = ft_strlen(base) + 1;
-	if (nb > (base_len - 1))
+	base_len = ft_strlen(base);
+	if (nb >= base_len)
 		ft_putnbr_base(nb / base_len, base, count);
 	ft_putchar(base[nb % base_len], count);
 }
