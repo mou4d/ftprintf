@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_put_address.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 22:11:22 by mbousbaa          #+#    #+#             */
-/*   Updated: 2022/10/31 23:13:28 by mbousbaa         ###   ########.fr       */
+/*   Created: 2022/10/31 22:47:44 by mbousbaa          #+#    #+#             */
+/*   Updated: 2022/10/31 23:14:39 by mbousbaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c, size_t *count)
+void	ft_put_address(void *nb, size_t *count)
 {
-	*count += write(1, &c, 1);
+	char			*base;
+	unsigned long	ul;
+
+	ul = (unsigned long) nb;
+	base = "0123456789abcdef";
+	if (ul >= 16)
+		ft_put_address((void *)(ul / 16), count);
+	ft_putchar(base[ul % 16], count);
 }

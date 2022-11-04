@@ -6,13 +6,13 @@
 /*   By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 22:13:30 by mbousbaa          #+#    #+#             */
-/*   Updated: 2022/10/27 00:58:07 by mbousbaa         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:00:21 by mbousbaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_base(unsigned long nb, char *base, size_t *count)
+void	ft_putnbr_base(unsigned int nb, char *base, size_t *count)
 {
 	size_t			base_len;
 

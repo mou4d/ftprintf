@@ -6,11 +6,34 @@
 /*   By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 05:31:51 by mbousbaa          #+#    #+#             */
-/*   Updated: 2022/10/27 00:52:47 by mbousbaa         ###   ########.fr       */
+/*   Updated: 2022/11/04 02:14:47 by mbousbaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	helper(char c, va_list ptr, size_t	*count)
+{
+	if (c == 'c')
+		ft_putchar(va_arg(ptr, int), count);
+	else if ((c == 'd') || (c == 'i'))
+		ft_putnbr(va_arg(ptr, int), count);
+	else if (c == 'u')
+		ft_putnbr_base(va_arg(ptr, unsigned int), "0123456789", count);
+	else if (c == 'x')
+		ft_putnbr_base(va_arg(ptr, unsigned int), "0123456789abcdef", count);
+	else if (c == 'X')
+		ft_putnbr_base(va_arg(ptr, unsigned int), "0123456789ABCDEF", count);
+	else if (c == 's')
+		ft_putstr(va_arg(ptr, char *), count);
+	else if (c == 'p')
+	{
+		ft_putstr("0x", count);
+		ft_put_address(va_arg(ptr, void *), count);
+	}
+	else
+		ft_putchar(c, count);
+}
 
 int	ft_printf(const char *str, ...)
 {
@@ -26,44 +49,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			if (str[i] == 'c')
-			{	
-				ft_putchar(va_arg(argsptr, int), &ret);
-			}
-			else if (str[i] == 's')
-			{
-				ft_putstr(va_arg(argsptr, char *), &ret);
-			}
-			else if (str[i] == 'p')
-			{
-				ft_putstr("0x", &ret);
-				ft_putnbr_base(va_arg(argsptr, unsigned long),
-					"0123456789abcdef", &ret);
-			}
-			else if ((str[i] == 'd') || (str[i] == 'i'))
-			{	
-				ft_putnbr(va_arg(argsptr, int), &ret);
-			}
-			else if (str[i] == 'u')
-			{	
-				// ft_putnbr(va_arg(argsptr, unsigned int), &ret);
-				ft_putnbr_base(va_arg(argsptr, unsigned long),
-					"0123456789", &ret);
-			}
-			else if (str[i] == 'x')
-			{	
-				ft_putnbr_base(va_arg(argsptr, unsigned long),
-					"0123456789abcdef", &ret);
-			}
-			else if (str[i] == 'X')
-			{
-				ft_putnbr_base(va_arg(argsptr, unsigned long),
-					"0123456789ABCDEF", &ret);
-			}
-			else
-			{
-				ft_putchar(str[i], &ret);
-			}
+			helper(str[i], argsptr, &ret);
 		}
 		else
 			ft_putchar(str[i], &ret);
@@ -72,17 +58,3 @@ int	ft_printf(const char *str, ...)
 	va_end(argsptr);
 	return (ret);
 }
-//  #include <stdio.h>
-
-//  int main()
-//  {
-// 	int n;
-// 	n = 777; 
-// 	ft_printf("%%p %p\n", &n);
-// 	printf("%%p %p\n", &n);
-// 	ft_printf("%%x %x\n", 75395145);
-// 	printf("%%x %x\n", 75395145);
-// 	ft_printf("%%u %u\n", 1024);
-// 	printf("%%u %u\n", 1024);
-// 	 return 0;
-//  }

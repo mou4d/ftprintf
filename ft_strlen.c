@@ -6,7 +6,7 @@
 /*   By: mbousbaa <mbousbaa@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:17:27 by mbousbaa          #+#    #+#             */
-/*   Updated: 2022/10/26 17:19:02 by mbousbaa         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:19:07 by mbousbaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ size_t	ft_strlen(char *s)
 	len = 0;
 	while (s[len])
 		len++;
-	return(len);
+	return (len);
 }
