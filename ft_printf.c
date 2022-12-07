@@ -31,7 +31,7 @@ static void	helper(char c, va_list ptr, size_t	*count)
 		ft_putstr("0x", count);
 		ft_put_address(va_arg(ptr, void *), count);
 	}
-	else
+	else if (c == '%')
 		ft_putchar(c, count);
 }
 
@@ -53,7 +53,10 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 			ft_putchar(str[i], &ret);
-		i++;
+		if (str[i] != '\0')
+			i++;
+		else
+			break ;
 	}
 	va_end(argsptr);
 	return (ret);
